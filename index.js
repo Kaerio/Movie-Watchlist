@@ -12,8 +12,7 @@ function getMovieList(input){
                     searchResult.classList.remove('empty')
                     searchResult.classList.add('full')
 
-                    renderMovieListHtml(data)
-                   
+                    renderMovieListHtml(data)                   
                 }
                 else{
                     searchResult.innerHTML = `
@@ -84,9 +83,9 @@ function renderAddToWatchlistBtn(movieId){
     }
     else{
         return `<button class="add-to-watchlist" id="add-to-watchlist-btn" data-movie-id="${movieId}">
-                                                            <i class="fa-solid fa-circle-plus"></i>
-                                                            Watchlist
-                                                        </button>`
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Watchlist
+                </button>`
     }
 }
 
@@ -94,15 +93,19 @@ function addToWatchlist(movieId){
     let watchlist = getWatchlist()
     watchlist.push(movieId)
     localStorage.setItem("watchlist", JSON.stringify(watchlist))
-    // console.log(watchlist);
+    // change the 'add to watchlist' button to span 'in Watchlist'
     let divToUpdate = document.querySelector(`[data-div='${movieId}']`)
     divToUpdate.innerHTML = renderAddToWatchlistBtn(movieId)
 }
 
+searchInput.addEventListener('keydown', function(e){
+    if (e.key === 'Enter'){
+        getMovieList(searchInput.value)        
+    }
+})
 
-searchBtn.addEventListener('click', function(e){
-    const input = searchInput.value
-    getMovieList(input)
+searchBtn.addEventListener('click', function(e){ 
+    getMovieList(searchInput.value)
 })
 
 document.addEventListener('click', function(e){
@@ -110,8 +113,6 @@ document.addEventListener('click', function(e){
 
     if(target){
         const movieId = target.dataset.movieId
-        addToWatchlist(movieId)
-        //change btn into "✓ in watchlist"
-        
+        addToWatchlist(movieId) 
     }
 })
