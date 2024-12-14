@@ -7,7 +7,6 @@ function getMovieList(input){
     fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}&type=movie&r=json`)
         .then(res => res.json())
             .then(function(data){
-                // console.log(data)
                 if(data.Response === "True"){
                     searchResult.innerHTML = ""
                     searchResult.classList.remove('empty')
@@ -29,11 +28,9 @@ function getMovieList(input){
 
 function renderMovieListHtml(movieList){
     movieList.Search.forEach(function(movie){
-        console.log(movie)
         fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}&plot=short&r=json`)
             .then(res => res.json())
                 .then(function(data){
-                    // console.log(data)
                     searchResult.innerHTML += `
                         <div class="movie-container">
                             <div class="img-container">
@@ -74,7 +71,6 @@ function getWatchlist(){
     else {
         watchlist = []
     }
-    console.log(watchlist);
     return watchlist
 }
 
@@ -82,7 +78,8 @@ function renderAddToWatchlistBtn(movieId){
     let watchlist = getWatchlist()
     if(watchlist.includes(movieId)){
         return `<span class="in-watchlist" >
-                    ✓ Watchlist
+                    <i class="fa-solid fa-check"></i>
+                    Watchlist
                 </span>`
     }
     else{
@@ -97,7 +94,9 @@ function addToWatchlist(movieId){
     let watchlist = getWatchlist()
     watchlist.push(movieId)
     localStorage.setItem("watchlist", JSON.stringify(watchlist))
-    console.log(watchlist);
+    // console.log(watchlist);
+    let divToUpdate = document.querySelector(`[data-div='${movieId}']`)
+    divToUpdate.innerHTML = renderAddToWatchlistBtn(movieId)
 }
 
 
@@ -113,10 +112,6 @@ document.addEventListener('click', function(e){
         const movieId = target.dataset.movieId
         addToWatchlist(movieId)
         //change btn into "✓ in watchlist"
-        let divToUpdate = document.querySelector(`[data-div='${movieId}']`)
-        divToUpdate.innerHTML = `
-                <span class="in-watchlist" >
-                    ✓ in watchlist
-                </span>`
+        
     }
 })

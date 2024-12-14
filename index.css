@@ -289,11 +289,22 @@ main.full {
     white-space: nowrap;
     color: green;
     font-family: "Inter", sans-serif;
-    font-size: rem;
+    font-size: 1rem;
+    padding: 6px;
+    margin-left: -5px;
     font-weight: 500;
     display: flex;
     align-items: center;
     gap: 7px;
+}
+
+.fa-check {
+    color: green;
+    /* background-color: #0E0E0E; */
+    /* border-radius: 50%; */
+    /* padding: 3px; */
+    font-size: 1.3rem;
+    /* margin-right: 4px; */
 }
 
 .description p {
@@ -440,11 +451,13 @@ main.watchlist-result.full {
     }
 
     .text-container:nth-child(2), 
-    .text-container:nth-child(2) button {
+    .text-container:nth-child(2) button,
+    .text-container:nth-child(2) span {
         font-size: 1rem;
     }
 
-    .text-container:nth-child(2) button i {
+    .text-container:nth-child(2) button i,
+    .text-container:nth-child(2) span i {
         font-size: 1rem;
     }
 
