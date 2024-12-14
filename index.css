@@ -16,7 +16,7 @@ body {
 .wrapper {
     background-color: #0E0E0E;
     width: 100%;
-    max-width: 1300px;
+    max-width: 100%;
     margin: 0 auto;
     min-height: 100%;
     display: flex;
