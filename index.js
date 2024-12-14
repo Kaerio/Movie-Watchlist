@@ -1,4 +1,5 @@
-const apiKey = '4ba758d6'
+// const apiKey = '4ba758d6'
+const apiKey = process.env.OMDB_API_KEY
 const searchInput = document.getElementById('search-input')
 const searchBtn = document.getElementById('search-btn')
 const searchResult = document.getElementById('search-result')

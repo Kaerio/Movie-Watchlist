@@ -1,4 +1,5 @@
-const apiKey = '4ba758d6'
+// const apiKey = '4ba758d6'
+const apiKey = process.env.OMDB_API_KEY
 const watchlistResultEl = document.getElementById('watchlist-result')
 
 function getWatchlist(){
