@@ -35,7 +35,7 @@ function renderMovieListHtml(watchlist){
             watchlistResultEl.innerHTML = ""
             watchlistResultEl.classList.remove('empty')
             watchlistResultEl.classList.add('full')
-            fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}&plot=short&r=json`)
+            fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}&plot=short&r=json`)
                 .then(res => res.json())
                     .then(function(data){
                         // console.log(data)

@@ -4,7 +4,7 @@ const searchBtn = document.getElementById('search-btn')
 const searchResult = document.getElementById('search-result')
 
 function getMovieList(input){
-    fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${input}&type=movie&r=json`)
+    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${input}&type=movie&r=json`)
         .then(res => res.json())
             .then(function(data){
                 // console.log(data)
@@ -30,7 +30,7 @@ function getMovieList(input){
 function renderMovieListHtml(movieList){
     movieList.Search.forEach(function(movie){
         console.log(movie)
-        fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}&plot=short&r=json`)
+        fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}&plot=short&r=json`)
             .then(res => res.json())
                 .then(function(data){
                     // console.log(data)
