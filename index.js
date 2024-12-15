@@ -100,12 +100,12 @@ function addToWatchlist(movieId){
 
 searchInput.addEventListener('keydown', function(e){
     if (e.key === 'Enter'){
-        getMovieList(searchInput.value)        
+        getMovieList(searchInput.value.trim())        
     }
 })
 
 searchBtn.addEventListener('click', function(e){ 
-    getMovieList(searchInput.value)
+    getMovieList(searchInput.value.trim())
 })
 
 document.addEventListener('click', function(e){
